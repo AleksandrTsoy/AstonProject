@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "ru.alex_tsoy.entity.Employee" table = "employee">
+        <id name = "id" type = "int" column = "employee_id">
+            <generator class="native"/>
+        </id>
+        <property name = "firstName" column = "first_name" type = "java.lang.String"/>
+        <property name = "lastName" column = "last_name" type = "java.lang.String"/>
+        <property name = "email" column = "email" type = "java.lang.String"/>
+        <set name="projects" table="employee_to_project" fetch="select" cascade="all" lazy="false">
+            <key column="employee_id"/>
+            <many-to-many column="project_id" class="ru.alex_tsoy.entity.Project"/>
+        </set>
+        <many-to-one name="position" column="position_id" lazy="false"/>
+    </class>
+</hibernate-mapping>

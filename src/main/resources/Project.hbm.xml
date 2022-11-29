@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "ru.alex_tsoy.entity.Project" table = "project">
+        <id name = "id" type = "int" column = "project_id">
+            <generator class="native"/>
+        </id>
+        <property name = "name" column = "name" type = "java.lang.String"/>
+        <property name = "end" column = "date_end" type = "java.time.LocalDate"/>
+        <many-to-one name="customer" column="customer_id" fetch="join"/>
+    </class>
+</hibernate-mapping>
