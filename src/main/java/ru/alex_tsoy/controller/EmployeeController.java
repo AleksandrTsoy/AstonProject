@@ -1,7 +1,5 @@
 package ru.alex_tsoy.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@Api(value = "Employee")
 @RequestMapping("/employee")
 public class EmployeeController {
     private final EmployeeService employeeService;
@@ -24,13 +21,11 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @ApiOperation("getAll")
     @GetMapping("/all")
     public ResponseEntity<List<Employee>> getAllEmployees() {
         return ResponseEntity.ok(employeeService.findAllEmployees());
     }
 
-    @ApiOperation("create")
     @PostMapping("/create")
     public ResponseEntity<Employee> createEmployee(@RequestBody @Valid Employee employee) {
         try {
@@ -41,7 +36,6 @@ public class EmployeeController {
         }
     }
 
-    @ApiOperation("update")
     @PostMapping("/update")
     public ResponseEntity<Employee> updateEmployee(@RequestBody @Valid Employee employee) {
         try {
@@ -52,7 +46,6 @@ public class EmployeeController {
         }
     }
 
-    @ApiOperation("delete")
     @PostMapping("/delete")
     public ResponseEntity<String> deleteEmployee(@RequestBody @Valid Employee employee) {
         try {
@@ -63,13 +56,11 @@ public class EmployeeController {
         }
     }
 
-    @ApiOperation("countPosition")
     @GetMapping("/count-position")
     public ResponseEntity<Map<String, Long>> countEmployeeByPosition() {
         return ResponseEntity.ok(employeeService.countEmployeeByPosition());
     }
 
-    @ApiOperation("countProject")
     @GetMapping("/count-project")
     public ResponseEntity<Map<String, Long>> countEmployeeByProject() {
         return ResponseEntity.ok(employeeService.countEmployeeByProject());
