@@ -11,10 +11,10 @@
         <property name = "firstName" column = "first_name" type = "java.lang.String"/>
         <property name = "lastName" column = "last_name" type = "java.lang.String"/>
         <property name = "email" column = "email" type = "java.lang.String"/>
-        <set name="projects" table="employee_to_project" fetch="select" cascade="all" lazy="false">
+        <set name="projects" table="employee_to_project" cascade="all" fetch="join">
             <key column="employee_id"/>
             <many-to-many column="project_id" class="ru.alex_tsoy.entity.Project"/>
         </set>
-        <many-to-one name="position" column="position_id" lazy="false"/>
+        <many-to-one name="position" column="position_id" fetch="join"/>
     </class>
 </hibernate-mapping>

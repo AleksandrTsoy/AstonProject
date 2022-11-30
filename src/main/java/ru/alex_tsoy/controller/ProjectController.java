@@ -22,12 +22,12 @@ public class ProjectController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Project>> getAllAccounts(@RequestBody @Valid Customer customer) {
+    public ResponseEntity<List<Project>> getAllProjects(@RequestBody @Valid Customer customer) {
         return ResponseEntity.ok(projectService.findAllProjectsByCustomer(customer.getId()));
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Project> create(@RequestBody @Valid Project project) {
+    public ResponseEntity<Project> createProject(@RequestBody @Valid Project project) {
         try {
             projectService.save(project);
             return ResponseEntity.ok(projectService.findById(project.getId()));
@@ -37,7 +37,7 @@ public class ProjectController {
     }
 
     @PostMapping("/update")
-    public ResponseEntity<Project> update(@RequestBody @Valid Project project) {
+    public ResponseEntity<Project> updateProject(@RequestBody @Valid Project project) {
         try {
             projectService.update(project);
             return ResponseEntity.ok(projectService.findById(project.getId()));
@@ -47,7 +47,7 @@ public class ProjectController {
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<String> delete(@RequestBody @Valid Project project) {
+    public ResponseEntity<String> deleteProject(@RequestBody @Valid Project project) {
         try {
             projectService.deleteById(project.getId());
             return ResponseEntity.ok("Delete success.");

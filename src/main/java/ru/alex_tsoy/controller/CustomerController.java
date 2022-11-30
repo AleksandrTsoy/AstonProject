@@ -25,7 +25,7 @@ public class CustomerController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Customer> create(@RequestBody @Valid Customer customer) {
+    public ResponseEntity<Customer> createCustomer(@RequestBody @Valid Customer customer) {
         try {
             customerService.save(customer);
             return ResponseEntity.ok(customerService.findById(customer.getId()));
@@ -35,7 +35,7 @@ public class CustomerController {
     }
 
     @PostMapping("/update")
-    public ResponseEntity<Customer> update(@RequestBody @Valid Customer customer) {
+    public ResponseEntity<Customer> updateCustomer(@RequestBody @Valid Customer customer) {
         try {
             customerService.update(customer);
             return ResponseEntity.ok(customerService.findById(customer.getId()));
@@ -45,7 +45,7 @@ public class CustomerController {
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<String> delete(@RequestBody @Valid Customer customer) {
+    public ResponseEntity<String> deleteCustomer(@RequestBody @Valid Customer customer) {
         try {
             customerService.deleteById(customer.getId());
             return ResponseEntity.ok("Delete success.");

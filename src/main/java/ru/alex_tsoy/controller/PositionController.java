@@ -20,12 +20,12 @@ public class PositionController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Position>> getAllAccounts() {
+    public ResponseEntity<List<Position>> getAllPositions() {
         return ResponseEntity.ok(positionService.findAllPositions());
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Position> create(@RequestBody @Valid Position position) {
+    public ResponseEntity<Position> createPosition(@RequestBody @Valid Position position) {
         try {
             positionService.save(position);
             return ResponseEntity.ok(positionService.findById(position.getId()));
@@ -35,7 +35,7 @@ public class PositionController {
     }
 
     @PostMapping("/update")
-    public ResponseEntity<Position> update(@RequestBody @Valid Position position) {
+    public ResponseEntity<Position> updatePosition(@RequestBody @Valid Position position) {
         try {
             positionService.update(position);
             return ResponseEntity.ok(positionService.findById(position.getId()));
@@ -45,7 +45,7 @@ public class PositionController {
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<String> delete(@RequestBody @Valid Position position) {
+    public ResponseEntity<String> deletePosition(@RequestBody @Valid Position position) {
         try {
             positionService.deleteById(position.getId());
             return ResponseEntity.ok("Delete success.");

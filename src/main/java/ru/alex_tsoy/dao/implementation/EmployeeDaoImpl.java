@@ -28,7 +28,7 @@ public class EmployeeDaoImpl extends BaseSession implements EmployeeDao {
     public List<Employee> findAllEmployees() {
         try (SessionFactory sessionFactory = getSession();
              Session session = sessionFactory.openSession()) {
-            return session.createQuery("select e from Employee e", Employee.class)
+            return session.createQuery("select e from Employee e join fetch e.position p join fetch e.projects pr join fetch pr.customer c", Employee.class)
                     .getResultList();
         }
     }
